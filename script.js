@@ -43,7 +43,11 @@ async function fetchNewsQuery(query){
 }
 function displayBlogs(articles){
     blogContainer.innerHTML ="";
-    articles.forEach((article)=>{
+
+    // articles.map(e=>{
+
+    // })
+    articles.map((article)=>{
         const blogCard = document.createElement
         ("div");
         blogCard.classList.add("blog-card");
@@ -70,11 +74,22 @@ function displayBlogs(articles){
     });
 }
 
-(async()=>{
-    try{
-       const articles= await fetchRandomNews();
-       displayBlogs(articles);
-    } catch (error) {
-     console.error("Error fetching random news",error);
-    }
-})();
+// (async()=>{
+//     try{
+//        const articles= await fetchRandomNews();
+//        displayBlogs(articles);
+//     } catch (error) {
+//      console.error("Error fetching random news",error);
+//     }
+// })();
+
+
+ fetchRandomNews().then(e=>{
+    displayBlogs(e);
+}).catch(e=>
+    {
+        console.log(e)
+    })
+
+    
+    
